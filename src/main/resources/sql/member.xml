@@ -19,9 +19,7 @@
 	
 	<!-- SELECT : isNicknameExist -->
 	<select id="isNicknameExist" parameterType="string" resultType="int">
-		select nickname 
-		from member
-		where nickname=?
+	
 		
 	</select>
 	

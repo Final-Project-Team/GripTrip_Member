@@ -14,27 +14,34 @@
 	
 	<!-- SELECT : isEmailExist -->
 	<select id="isEmailExist" parameterType="string" resultType="int">
-	
+		SELECT COUNT(-1)
+		FROM member
+		WHERE email=#{value}
 	</select>
 	
 	<!-- SELECT : isNicknameExist -->
 	<select id="isNicknameExist" parameterType="string" resultType="int">
-	
+		SELECT COUNT(-1)
+		FROM member
+		WHERE nickname=#{value}
 	</select>
 	
 	<!-- INSERT : registerMember -->
 	<insert id="registerMember" parameterType="member">
-	
+		INSERT INTO	member (email, nickname, username, password, address)
+		value(email=#{email}, nickname=#{nickname}, member=#{member}, password=#{password}, address=#{address})
 	</insert>
 	
 	<!-- SELECT : checkPassword -->
 	<select id="checkPassword" parameterType="string" resultType="int">
-	
+		SELECT COUNT(-1)
+		FROM member
+		WHERE password=#{value}
 	</select>
 	
 	<!-- DELETE : removeMember -->
 	<delete id="removeMember" parameterType="string">
-	
+		
 	</delete>
 	
 	<!-- SELECT : login -->
@@ -52,37 +59,6 @@
 	
 	</update>
 </mapper>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

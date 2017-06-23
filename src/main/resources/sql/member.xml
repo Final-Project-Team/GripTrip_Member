@@ -19,7 +19,10 @@
 	
 	<!-- SELECT : isNicknameExist -->
 	<select id="isNicknameExist" parameterType="string" resultType="int">
-	
+		select nickname 
+		from member
+		where nickname=?
+		
 	</select>
 	
 	<!-- INSERT : registerMember -->
@@ -29,27 +32,33 @@
 	
 	<!-- SELECT : checkPassword -->
 	<select id="checkPassword" parameterType="string" resultType="int">
-	
+		
 	</select>
 	
 	<!-- DELETE : removeMember -->
 	<delete id="removeMember" parameterType="string">
-	
+		delete from member where email=#{value}
 	</delete>
 	
 	<!-- SELECT : login -->
 	<select id="login" parameterType="member" resultMap="selectMemberRM">
-	
+		select email, nickname, username, password, address 
+		from member
+		where email= #{email} AND password= #{password}
 	</select>
 	
 	<!-- SELECT : showMemberInfo -->
 	<select id="showMemberInfo" parameterType="string" resultMap="selectMemberRM">
-	
+		select email, nickname, username, password, address 
+		from member
 	</select>
 	
 	<!-- UPDATE : updateMember -->
 	<update id="updateMember" parameterType="member">
-	
+		update member 
+		set nickname=#{nickname},username=#{username},
+		password=#{password},address=#{address}
+		where email=#{email}
 	</update>
 </mapper>
 

@@ -12,6 +12,7 @@
 
 	<typeAliases>
 		<typeAlias type="spring.trip.domain.Member" alias="member" />
+		<typeAlias type="spring.trip.domain.Comment" alias="comment"/>
 	</typeAliases>
 	
 	<!-- Unit Test 시 필요 -->
@@ -29,6 +30,7 @@
 
 	<mappers>
 		<mapper resource="sql/member.xml" />
+		<mapper resource="sql/comment.xml" />
 	</mappers>
 </configuration>
 

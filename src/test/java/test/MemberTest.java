@@ -78,8 +78,6 @@ public class MemberTest {
 		System.out.println(session.selectOne("memberMapper.showMemberInfo", email)+" 불러옴");
 	
 		*/
-	
-
 	}
 }
 

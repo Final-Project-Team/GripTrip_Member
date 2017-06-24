@@ -54,9 +54,8 @@
 	<!-- SELECT : showMemberInfo -->
 	<select id="showMemberInfo" parameterType="string" resultMap="selectMemberRM">
 		select email, nickname, username, password, address 
-		from member 
+		from member
 		where email=#{value}
-
 	</select>
 	
 	<!-- UPDATE : updateMember -->

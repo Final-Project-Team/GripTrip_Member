@@ -8,20 +8,9 @@ import spring.trip.model.service.MemberService;
 
 public class MemberServiceImpl implements MemberService{
 
-	private SqlSession sqlSession;
-	private MemberDAO memberDAO;
-	
-	public void setSqlSession(SqlSession sqlSession) {
-		this.sqlSession = sqlSession;
-	}
-
-	public void setMemberDAO(MemberDAO memberDAO) {
-		this.memberDAO = memberDAO;
-	}
-
 	@Override
 	public boolean isEmailExist(String email) {
-		
+		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -67,4 +56,5 @@ public class MemberServiceImpl implements MemberService{
 		return 0;
 	}
 
+	
 }

@@ -29,7 +29,7 @@
 	<!-- INSERT : registerMember -->
 	<insert id="registerMember" parameterType="member">
 		INSERT INTO	member (email, nickname, username, password, address)
-		value(email=#{email}, nickname=#{nickname}, member=#{member}, password=#{password}, address=#{address})
+		values(#{email}, #{nickname}, #{username}, #{password}, #{address})
 	</insert>
 	
 	<!-- SELECT : checkPassword -->
@@ -55,6 +55,7 @@
 	<select id="showMemberInfo" parameterType="string" resultMap="selectMemberRM">
 		select email, nickname, username, password, address 
 		from member
+		where email= #{value}
 	</select>
 	
 	<!-- UPDATE : updateMember -->

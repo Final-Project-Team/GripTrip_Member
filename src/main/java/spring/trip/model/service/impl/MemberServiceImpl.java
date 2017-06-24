@@ -7,54 +7,60 @@ import spring.trip.model.dao.MemberDAO;
 import spring.trip.model.service.MemberService;
 
 public class MemberServiceImpl implements MemberService{
+	
+	private SqlSession sqlSession;
+	private MemberDAO memberDAO;
+	
+	public void setSqlSession(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+
+	public void setMemberDAO(MemberDAO memberDAO) {
+		this.memberDAO = memberDAO;
+	}
 
 	@Override
 	public boolean isEmailExist(String email) {
-		// TODO Auto-generated method stub
-		return false;
+	
 	}
 
 	@Override
 	public boolean isNicknameExist(String nickname) {
-		// TODO Auto-generated method stub
-		return false;
+		
 	}
 
 	@Override
 	public int registerMember(Member vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		
 	}
 
 	@Override
 	public boolean checkPassword(String password) {
-		// TODO Auto-generated method stub
-		return false;
+		
 	}
 
 	@Override
 	public int removeMember(String email) {
-		// TODO Auto-generated method stub
-		return 0;
+		int row= memberDAO.removeMember(email);
+		return row;
 	}
 
 	@Override
-	public Member login(Member member) {
-		// TODO Auto-generated method stub
-		return null;
+	public Member login(Member vo) {
+		memberDAO.login(vo);
+		return vo;
 	}
 
 	@Override
 	public Member showMemberInfo(String email) {
-		// TODO Auto-generated method stub
-		return null;
+		Member vo = memberDAO.showMemberInfo(email);
+		return vo;
 	}
 
 	@Override
 	public int updateMember(Member vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		int row= memberDAO.updateMember(vo);
+		return row;
 	}
-
 	
 }

@@ -18,7 +18,24 @@
 		FROM story_comment
 	</select>
 	
-	<!--  -->
+	<!-- INSERT : writeComment -->
+	<insert id="writeComment" parameterType="comment">
+		INSERT INTO story_comment(comment_no, email, story_no, comment_content, comment_create_date)
+		VALUES(#{commentNo}, #{email}, #{storyNo}, #{commentContent}, #{commentCreateDate})
+	</insert>
+	
+	<!-- UPDATE : updateComment -->
+	<update id="updateComment">
+		UPDATE story_comment
+		SET comment_content = {comment_content}
+		WHERE comment_no = #{comment_no}
+	</update>
+	
+	<!-- DELETE : deleteComment -->
+	<delete id="removeComment" parameterType="string">
+		DELETE FROM story_comment
+		WHERE comment_no = #{value}
+	</delete>
 </mapper>
 
 

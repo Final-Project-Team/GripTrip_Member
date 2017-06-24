@@ -55,7 +55,7 @@
 	<select id="showMemberInfo" parameterType="string" resultMap="selectMemberRM">
 		select email, nickname, username, password, address 
 		from member
-		where email= #{value}
+		where email=#{value}
 	</select>
 	
 	<!-- UPDATE : updateMember -->

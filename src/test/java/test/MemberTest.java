@@ -1,5 +1,5 @@
 package test;
-
+//단위 테스트
 import java.io.Reader;
 
 import org.apache.ibatis.io.Resources;
@@ -78,6 +78,19 @@ public class MemberTest {
 		System.out.println(session.selectOne("memberMapper.showMemberInfo", email)+" 불러옴");
 	
 		*/
-	
 	}
 }
+
+
+/*
+
+<!-- INSERT : registerMember -->
+<!-- SELECT : isEmailExist -->
+<!-- SELECT : isNicknameExist -->
+<!-- SELECT : checkPassword -->
+<!-- DELETE : removeMember -->
+<!-- SELECT : login -->
+<!-- SELECT : showMemberInfo -->
+<!-- UPDATE : updateMember -->
+
+*/

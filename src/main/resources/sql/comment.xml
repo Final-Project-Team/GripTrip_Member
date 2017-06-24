@@ -13,9 +13,10 @@
 	</resultMap>
 	
 	<!-- SELECT : getAllComments -->
-	<select id="getAllComments" resultMap="selectCommentRM">
+	<select id="getAllCommentsOfStroy" parameterType="string" resultMap="selectCommentRM">
 		SELECT comment_no, email, story_no, comment_content, comment_create_date
 		FROM story_comment
+		WHERE story_no = #{value}
 	</select>
 	
 	<!-- INSERT : writeComment -->
@@ -31,7 +32,7 @@
 		WHERE comment_no = #{comment_no}
 	</update>
 	
-	<!-- DELETE : deleteComment -->
+	<!-- DELETE : removeComment -->
 	<delete id="removeComment" parameterType="string">
 		DELETE FROM story_comment
 		WHERE comment_no = #{value}

@@ -7,6 +7,6 @@ import spring.trip.domain.Comment;
 public interface CommentDAO {
 	int writeComment(String comment_content);
 	int updateComment(Comment vo);
-	int deleteComment(String commentNo);
-	List<Comment> getAllComments();
+	int removeComment(String commentNo);
+	List<Comment> getAllCommentsOfStroy(String storyNo);
 }

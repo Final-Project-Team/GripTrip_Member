@@ -27,13 +27,13 @@ public class CommentDAOImpl implements CommentDAO{
 	}
 
 	@Override
-	public int deleteComment(String commentNo) {
+	public int removeComment(String commentNo) {
 		return sqlSession.delete("commentMapper.removeComment", commentNo);
 	}
 
 	@Override
-	public List<Comment> getAllComments() {
-		return sqlSession.selectList("commentMapper.getAllComments");
+	public List<Comment> getAllCommentsOfStroy(String storyNo) {
+		return sqlSession.selectList("commentMapper.getAllComments", storyNo);
 	}
 	
 }

@@ -11,6 +11,21 @@ public class Comment {
 	// constructors
 	public Comment(){}
 	
+	public Comment(String commentContent){
+		this.commentContent = commentContent;
+	}
+	
+	public Comment(int commentNo, String commentContent){
+		this.commentNo = commentNo;
+		this.commentContent = commentContent;
+	}
+	
+	public Comment(int commentNo, String email, String commentContent){
+		this.commentNo = commentNo;
+		this.email = email;
+		this.commentContent = commentContent;
+	}
+	
 	public Comment(int commentNo, String email, int storyNo, String commentContent, String commentCreateDate) {
 		super();
 		this.commentNo = commentNo;

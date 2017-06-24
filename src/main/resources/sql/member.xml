@@ -29,7 +29,7 @@
 	<!-- INSERT : registerMember -->
 	<insert id="registerMember" parameterType="member">
 		INSERT INTO	member (email, nickname, username, password, address)
-		VALUES(#{email}, #{nickname}, #{username}, #{password}, #{address})
+		values(#{email}, #{nickname}, #{username}, #{password}, #{address})
 	</insert>
 	
 	<!-- SELECT : checkPassword -->

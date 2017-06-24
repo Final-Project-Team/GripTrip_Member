@@ -1,62 +1,60 @@
 package spring.trip.model.service.impl;
 
+import org.apache.ibatis.session.SqlSession;
+
 import spring.trip.domain.Member;
 import spring.trip.model.dao.MemberDAO;
 import spring.trip.model.service.MemberService;
 
 public class MemberServiceImpl implements MemberService{
-	private MemberDAO memberDAO;
-	
-	public void setMemberDAO(MemberDAO memberDAO) {
-		this.memberDAO = memberDAO;
-	}
 
 	@Override
 	public boolean isEmailExist(String email) {
-		memberDAO.isEmailExist(email);
+		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean isNicknameExist(String nickname) {
-		memberDAO.isNicknameExist(nickname);
+		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public int registerMember(Member vo) {
-		int reg = memberDAO.registerMember(vo);
-		return reg;
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public boolean checkPassword(String password) {
-		memberDAO.checkPassword(password);
+		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public int removeMember(String email) {
-		int rem = memberDAO.removeMember(email);
-		return rem;
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public Member login(Member member) {
-		Member mb = memberDAO.login(member);
-		return mb;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public Member showMemberInfo(String email) {
-		Member mb = memberDAO.showMemberInfo(email);
-		return mb;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public int updateMember(Member vo) {
-		int up = memberDAO.updateMember(vo);
-		return up;
+		// TODO Auto-generated method stub
+		return 0;
 	}
+
 	
 }

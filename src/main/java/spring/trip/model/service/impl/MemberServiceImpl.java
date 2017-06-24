@@ -39,7 +39,7 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public Member login(String email, String password) {
+	public Member login(Member member) {
 		// TODO Auto-generated method stub
 		return null;
 	}

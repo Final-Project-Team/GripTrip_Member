@@ -1,7 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
 
+	<!-- InternalResourceViewResolver -->
+	<bean id="internalResourceViewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+		<property name="order" value="1"/>
+	</bean>
+
+	<!-- BasicDataSource --><!-- 보안을 위한 placeholder -->
+	<context:property-placeholder location="classpath:config/jdbc.properties" />
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${JDBC.driver}" />
+		<property name="url" value="${JDBC.url}" />
+		<property name="username" value="${JDBC.username}" />
+		<property name="password" value="${JDBC.password}" />
+	</bean>
+
+	<!-- methodNameResolver  컨트롤러 내에서 해당 메소드를 찾아가는  -->
+	<bean id="methodNameResolver" 
+		class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+		<property name="paramName" value="command" />
+	</bean>
+
+
+
+	<!-- SqlSessionFactoryBean sqlSession을 만들기. db정보, sqlMapConfig정보가 재료 -->
+	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:config/SqlMapConfig.xml" />
+	</bean>
+
+	<!-- SqlSessionTemplate 자바로 쿼리문을 실행하는 함수를 갖고 있는 sqlSessionTemplate클래스-->
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryBean" />
+	</bean>
+
+
+	<!-- 이하 사용자 정의 bean -->
+	<bean id="memberDAOImpl" class="spring.trip.model.dao.impl.MemberDAOImpl">
+		<property name="sqlSession" ref="sqlSessionTemplate" />
+	</bean>
+	<!-- db 정보를  가공하는  -->
+	<bean id="memberServiceImpl" class="spring.trip.model.service.impl.MemberServiceImpl">
+		<property name="memberDAO" ref="memberDAOImpl" />
+	</bean>
+
+	
+	<!-- 멀티액션 컨트롤러  -->
+	<bean name="/member.do" class="spring.trip.controller.MemberContoller"> 
+		<property name="memberService" ref="memberServiceImpl"/>
+		<property name="methodNameResolver" ref="methodNameResolver"/>
+	</bean>
+	
+	
+	<!-- Ajax를 쓰기 위한 bean 생성  viewResolver, resolver에 order 설정... -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="0"/>
+	</bean>
+	<!--  Ajax를 쓰기 위한 bean 생성  MappingJackonJson,,, -->
+	<bean name="JsonView" class="org.springframework.web.servlet.view.json.MappingJacksonJsonView"/>
 </beans>

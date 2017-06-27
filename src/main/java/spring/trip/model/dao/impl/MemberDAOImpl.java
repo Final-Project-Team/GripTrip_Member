@@ -51,9 +51,9 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public boolean checkPassword(String password) {
+	public boolean checkPassword(Member vo) {
 		boolean foundPassword = false;
-		int row = sqlSession.selectOne("memberMapper.checkPassword", password);
+		int row = sqlSession.selectOne("memberMapper.checkPassword", vo);
 
 		if (row == 1) { // db에 password가 존재한다면
 			foundPassword = true;

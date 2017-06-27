@@ -10,6 +10,12 @@ public class MemberServiceImpl implements MemberService{
 
 	private MemberDAO memberDAO;
 	
+	
+	
+	public void setMemberDAO(MemberDAO memberDAO) {
+		this.memberDAO = memberDAO;
+	}
+
 	@Override
 	public boolean isEmailExist(String email) {
 		return memberDAO.isEmailExist(email);
@@ -26,8 +32,8 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public boolean checkPassword(String password) {
-		return memberDAO.checkPassword(password);
+	public boolean checkPassword(Member vo) {
+		return memberDAO.checkPassword(vo);
 	}
 
 	@Override

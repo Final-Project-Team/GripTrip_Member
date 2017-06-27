@@ -12,7 +12,7 @@ import spring.trip.domain.Member;
 
 public class MemberTest {
 	
-	@Test
+	/*@Test*/
 	public void jTest() throws Exception{
 		Reader r = Resources.getResourceAsReader("config/SqlMapConfig.xml")	;
 		SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(r);

@@ -4,8 +4,8 @@
 
 <configuration>
 	<!-- Unit Test 시 필요 -->
-	<properties resource="config/jdbc.properties"/>
-
+<!-- 	<properties resource="config/jdbc.properties"/>
+ -->
 	<settings>
 		<setting name="jdbcTypeForNull" value="NULL" />
 	</settings>
@@ -16,7 +16,7 @@
 	</typeAliases>
 	
 	<!-- Unit Test 시 필요 -->
-	<environments default="hello">
+	<!-- <environments default="hello">
 		<environment id="hello">
 			<transactionManager type="JDBC"/>
 			<dataSource type="UNPOOLED">
@@ -27,7 +27,7 @@
 			</dataSource>
 		</environment>
 	</environments>
-
+ -->
 	<mappers>
 		<mapper resource="sql/member.xml" />
 		<mapper resource="sql/comment.xml" />

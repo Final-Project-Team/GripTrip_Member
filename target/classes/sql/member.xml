@@ -33,10 +33,10 @@
 	</insert>
 	
 	<!-- SELECT : checkPassword -->
-	<select id="checkPassword" parameterType="string" resultType="int">
+	<select id="checkPassword" parameterType="member" resultType="int">
 		SELECT COUNT(-1)
 		FROM member
-		WHERE password=#{value}
+		WHERE email=#{email} and password=#{password}
 	</select>
 	
 	<!-- DELETE : removeMember -->
